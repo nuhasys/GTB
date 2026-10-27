@@ -1,0 +1,9 @@
+USE jardineria;
+
+SELECT CodigoOficina, Ciudad FROM Oficinas; --Ejer1
+SELECT Count(*) AS numeroClientes FROM Empleados;
+SELECT Pais, Count(*) AS numeroClientes FROM Clientes GROUP BY Pais;
+SELECT AVG(Cantidad) FROM Pagos WHERE YEAR(FechaPago) = 2006;
+SELECT Estado, Count(*) AS numeroPedidos FROM Pedidos GROUP BY Estado ORDER BY numeroPedidos ASC;
+--Ejer 6
+SELECT * FROM Productos
