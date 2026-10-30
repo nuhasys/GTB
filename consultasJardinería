@@ -6,4 +6,6 @@ SELECT Pais, Count(*) AS numeroClientes FROM Clientes GROUP BY Pais;
 SELECT AVG(Cantidad) FROM Pagos WHERE YEAR(FechaPago) = 2006;
 SELECT Estado, Count(*) AS numeroPedidos FROM Pedidos GROUP BY Estado ORDER BY numeroPedidos ASC;
 --Ejer 6
-SELECT * FROM Productos
+SELECT MIN(PrecioVenta), MAX(PrecioVenta) FROM Productos;
+SELECT Ciudad, Telefono FROM Oficinas WHERE Pais LIKE "EEUU";
+SELECT 
