@@ -1,6 +1,7 @@
 USE jardineria;
 
-SELECT CodigoOficina, Ciudad FROM Oficinas; --Ejer1
+--Ejer1
+SELECT CodigoOficina, Ciudad FROM Oficinas; 
 SELECT Count(*) AS numeroClientes FROM Empleados;
 SELECT Pais, Count(*) AS numeroClientes FROM Clientes GROUP BY Pais;
 SELECT AVG(Cantidad) FROM Pagos WHERE YEAR(FechaPago) = 2006;
@@ -24,4 +25,9 @@ SELECT MIN(FechaPago) AS primerPago, MAX(FechaPago) AS ultimoPago FROM Pagos;
 SELECT CodigoCliente FROM Pagos WHERE YEAR(FechaPago) = 2008;
 SELECT Estado FROM Pedidos GROUP BY Estado;
 --Ejer 21
-SELECT CodigoPedido,CodigoCliente,FechaEsperada,FechaEntrega FROM Pedidos WHERE 
+SELECT CodigoPedido,CodigoCliente,FechaEsperada,FechaEntrega FROM Pedidos WHERE FechaEntrega > FechaEsperada;
+SELECT CodigoPedido, COUNT(CodigoProducto) FROM DetallePedidos GROUP BY CodigoPedido;
+SELECT CodigoProducto, COUNT(*) AS vecesPedido FROM DetallePedidos GROUP BY CodigoProducto ORDER BY vecesPedido DESC LIMIT 20;
+SELECT CodigoPedido, CodigoCliente, FechaEsperada, FechaEntrega FROM Pedidos WHERE FechaEntrega <= ADDDATE(FechaEsperada,INTERVAL -2 DAY);
+SELECT SUM(Cantidad) * PrecioUnidad AS BaseImponible, ((SUM(Cantidad) * PrecioUnidad)/100)*18 AS IVA, SUM(Cantidad) * PrecioUnidad + ((SUM(Cantidad) * PrecioUnidad)/100)*18 AS Total FROM DetallePedidos GROUP BY PrecioUnidad;
+SELECT CodigoProducto, SUM(Cantidad) * PrecioUnidad AS BaseImponible, ((SUM(Cantidad) * PrecioUnidad)/100)*18 AS IVA, SUM(Cantidad) * PrecioUnidad + ((SUM(Cantidad) * PrecioUnidad)/100)*18 AS Total FROM DetallePedidos WHERE CodigoProducto LIKE "FR%" GROUP BY CodigoProducto,PrecioUnidad;
